@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet, Button, ActivityIndicator } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Button, ActivityIndicator, Alert } from 'react-native';
 import FormRow from '../components/FormRow';
 import firebase from 'firebase';
 import { fazerLogin } from '../actions';
@@ -40,22 +40,31 @@ class LoginPage extends React.Component {
     fazerLogin() {
         this.setState({ isLoading: true, mensagem: '' });
         const { email, senha } = this.state;
-        this.props.fazerLogin({email, senha}).then(() => {
-            this.setState({mensagem: 'Sucesso'});
+        this.props.fazerLogin({ email, senha }).then(() => {
+            this.setState({ mensagem: 'Sucesso' });
             this.props.navigation.replace('Main');
-        });
+        })
+        .catch(error => {
+            this.getMensagemPorErrorCode(error);
+        }).then(() => {
+            this.setState({ isLoading: false });
+        })
     }
 
     getMensagemPorErrorCode(errorCode) {
         switch (errorCode) {
             case 'auth/wrong-password':
-                return 'Usuário ou senha incorretos';
+                Alert.alert('Não foi possível realizar o login', 'Usuário ou senha incorretos');
+                break;
             case 'auth/user-not-found':
-                return 'Usuário ou senha incorretos';
+                Alert.alert('Não foi possível realizar o login', 'Usuário ou senha incorretos');
+                break;
             case 'auth/invalid-email':
-                return 'Email inválido';
+                Alert.alert('Não foi possível realizar o login', 'Email inválido');
+                break;
             default:
-                return 'Erro desconhecido';
+                Alert.alert('Não foi possível realizar o login', 'Erro desconhecido');
+                break;
         }
     }
 
@@ -85,15 +94,12 @@ class LoginPage extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.titulo}> Agenda Escolar</Text>
-                <Text style={styles.titulo}> Eletrônica </Text>
                 <FormRow first>
-                    <TextInput placeholder="Email" value={this.state.email} onChangeText={value => this.onChangeInput('email',value)}/>
+                    <TextInput placeholder="Email" value={this.state.email} onChangeText={value => this.onChangeInput('email',value)} keyboardType='email-address' autoCapitalize='none'/>
                 </FormRow>
                 <FormRow last>
                     <TextInput placeholder="Senha" secureTextEntry value={this.state.senha} onChangeText={value => this.onChangeInput('senha', value)}/>
                 </FormRow>
-                <Text style={styles.esqueciSenha}> Esqueci minha senha </Text>
                 {this.renderizarBotao()}
 
                 {this.renderizarMensagem()}
@@ -105,25 +111,8 @@ class LoginPage extends React.Component {
 const styles = StyleSheet.create({
     container: {
         paddingLeft: 10,
-        paddingRight: 10,
-        flex: 1, 
-        justifyContent: 'center',
-        backgroundColor: '#CADAEB'
-
-    },
-
-    titulo: {
-        fontSize: 45,
-        textAlign: 'center'
-    },
-
-    esqueciSenha: {
-        fontSize: 15,
-        textAlign: 'center',
-        marginBottom: 10
+        paddingRight: 10
     }
-
-
 });
 
 export default connect(null, { fazerLogin })(LoginPage)

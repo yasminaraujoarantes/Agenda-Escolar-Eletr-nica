@@ -16,9 +16,7 @@ export const fazerLogin = ({email, senha}) => dispatch => {
         const action = userLoginSucesso(usuario);
         dispatch(action);
     })
-    // .catch(error => {
-    //     // this.setState({ mensagem: this.getMensagemPorErrorCode(error.code) });
-    // }).then(() => {
-    //     // this.setState({ isLoading: false });
-    // })
+    .catch( error => {
+        return new Promise.reject(error.code);
+    })
 };

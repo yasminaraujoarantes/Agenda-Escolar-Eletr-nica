@@ -1,0 +1,42 @@
+[
+    {
+        "key": 1,
+        "title": "Conversa",
+        "linkTo": "Chamada",
+        "rate": 100,
+        "img":
+            "https://i.ibb.co/6vW2vBg/icone-conversa.png",
+        "description":
+            "Black Mirror é uma série de televisão britânica antológica de ficção científica criada por Charlie Brooker e centrada em temas obscuros e satíricos que examinam a sociedade moderna, particularmente a respeito das consequências imprevistas das novas tecnologias. Os episódios são trabalhos autônomos, que geralmente se passam em um presente alternativo ou em um futuro próximo."
+    },
+    {
+        "key": 2,
+        "title": "Aviso Geral",
+        "linkTo": "Chamada",
+        "rate": 95,
+        "img":
+            "https://i.ibb.co/Wk4Cr0Y/icone-avisos.png",
+        "description":
+            "Friends é uma premiada sitcom americana criada por David Crane e Marta Kauffman e apresentada pela rede de televisão NBC entre 22 de setembro de 1994 e 6 de maio de 2004, com um total de 236 episódios."
+    },
+    {
+        "key": 3,
+        "title": "Conteúdo Pedagógico",
+        "linkTo": "Chamada",
+        "rate": 100,
+        "img":
+            "https://i.ibb.co/v3FSWs9/icone-conteudo-pedagogico.png",
+        "description":
+            "Everybody Hates Chris (Todo Mundo Odeia o Chris (título no Brasil) ou Todos Contra o Chris (título em Portugal)) é uma série de televisão estadunidense de comédia dramática inspirado nas experiências pessoais de Chris Rock no bairro de Bed-Stuy, em Nova Iorque, seguindo um estilo muito parecido com a série Anos Incríveis."
+    },
+    {
+        "key": 4,
+        "title": "Chamada",
+        "linkTo": "Chamada",
+        "rate": 97,
+        "img":
+            "https://i.ibb.co/swdW3QV/icone-chamada.png",
+        "description":
+            "Game of Thrones é uma série de televisão norte-americana criada por David Benioff e D. B. Weiss, e baseada na série de livros A Song of Ice and Fire, de George R. R. Martin."
+    }
+]
